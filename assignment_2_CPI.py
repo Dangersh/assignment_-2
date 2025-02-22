@@ -1,10 +1,8 @@
-# Q1 and 2: Lines 4-34
+# Q1 and 2: Lines 4-32
 import pandas as pd
 
 # Initialize list with jurisdictions and empty list to collect dataframes
 jurisdiction_list = ['AB', 'BC', 'Canada', 'MB', 'NB', 'NL', 'NS', 'ON', 'PEI', 'QC', 'SK']
-# df_list = []
-
 data = []
 
 # Initialize loop to open the 11 different csv files and add them to the list
@@ -30,7 +28,7 @@ cpi_data['Month'] = pd.Categorical(cpi_data['Month'], categories=month_order, or
 cpi_data = cpi_data.sort_values(by=['Month', 'Jurisdiction'])
 
 # Print the first 12 rows of data
-print(cpi_data.head(13).to_string(index=False))
+print(cpi_data.head(12).to_string(index=False))
 print("\n")
 
 # Q3: Lines 38-51
@@ -46,8 +44,7 @@ df_filtered = cpi_data[cpi_data['Item'].isin(items_of_interest)]
 avg_monthly_change = df_filtered.groupby(['Jurisdiction', 'Item'])['pct_change'].mean().reset_index()
 
 # Report the numbers as a percent up to one decimal place
-avg_monthly_change['pct_change'] = avg_monthly_change['pct_change'].round(1)
-print(avg_monthly_change)
+print(avg_monthly_change.round(1))
 print("\n")
 
 # Q4: Lines 49-64
