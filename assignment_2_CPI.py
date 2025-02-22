@@ -62,7 +62,7 @@ for item in items_of_interest:
     jurisdiction = highest_change['Jurisdiction'].values[0]
     pct_change = highest_change['pct_change'].values[0]
     print(f"The province with the highest average change in {item} is {jurisdiction} with an average change of {pct_change}%.")
-
+    print("\n")
 # Q5 68-82 - Compute the annual change in CPI for services across Canada and all provinces
 
 # Filter for the 'Services' item
