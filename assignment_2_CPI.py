@@ -30,7 +30,7 @@ cpi_data['Month'] = pd.Categorical(cpi_data['Month'], categories=month_order, or
 cpi_data = cpi_data.sort_values(by=['Month', 'Jurisdiction'])
 
 # Print the first 12 rows of data
-print(cpi_data.head(13).to_string(index=False))
+print(cpi_data.head(12).to_string(index=False))
 print("\n")
 
 # Q3: Lines 38-51
