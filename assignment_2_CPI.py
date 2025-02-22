@@ -21,11 +21,21 @@ for jurisdiction in jurisdiction_list:
             data.append({'Item': row['Item'], 'Month': month, 'Jurisdiction': jurisdiction, 'CPI': row[month]})
 
 cpi_data = pd.DataFrame(data)
-# print(cpi_data.to_string())
+
+# Define the correct order for the months
+month_order = ['24-Jan', '24-Feb', '24-Mar', '24-Apr', '24-May', '24-Jun', '24-Jul', '24-Aug', '24-Sep', '24-Oct', '24-Nov', '24-Dec']
+cpi_data['Month'] = pd.Categorical(cpi_data['Month'], categories=month_order, ordered=True)
+
+# Sort the dataframe by Month first and then by Jurisdiction
+cpi_data = cpi_data.sort_values(by=['Month', 'Jurisdiction'])
 
 # Print the first 12 rows of data
-print(cpi_data.head(13))
+print(cpi_data.head(13).to_string(index=False))
 print("\n")
+
+# Print the first 12 rows of data
+# print(cpi_data).head(13))
+# print("\n")
 
 # Q3: Lines 32-45
 
