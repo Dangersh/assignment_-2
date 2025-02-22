@@ -24,7 +24,7 @@ cpi_data = pd.DataFrame(data)
 # print(cpi_data.to_string())
 
 # Print the first 12 rows of data
-print(cpi_data.head(12))
+print(cpi_data.head(13))
 
 
 # Q3: Lines 45-58
@@ -40,7 +40,7 @@ df_filtered = cpi_data[cpi_data['Item'].isin(items_of_interest)]
 avg_monthly_change = df_filtered.groupby(['Jurisdiction', 'Item'])['pct_change'].mean().reset_index()
 
 # Report the numbers as a percent up to one decimal place
-avg_monthly_change['pct_change'] = avg_monthly_change['pct_change'] #.round(1)
+avg_monthly_change['pct_change'] = avg_monthly_change['pct_change'].round(1)
 print(avg_monthly_change)
 
 # Q4: Lines 62-70
