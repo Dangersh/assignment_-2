@@ -1,4 +1,4 @@
-# Q1 and 2: Lines 2-45
+# Q1 and 2: Lines 4-34
 import pandas as pd
 
 # Initialize list with jurisdictions and empty list to collect dataframes
@@ -33,11 +33,7 @@ cpi_data = cpi_data.sort_values(by=['Month', 'Jurisdiction'])
 print(cpi_data.head(13).to_string(index=False))
 print("\n")
 
-# Print the first 12 rows of data
-# print(cpi_data).head(13))
-# print("\n")
-
-# Q3: Lines 32-45
+# Q3: Lines 38-51
 
 # Calculate the month-to-month percentage change
 cpi_data['pct_change'] = cpi_data.groupby(['Jurisdiction', 'Item'])['CPI'].pct_change() * 100
@@ -54,7 +50,7 @@ avg_monthly_change['pct_change'] = avg_monthly_change['pct_change'].round(1)
 print(avg_monthly_change)
 print("\n")
 
-# Q4: Lines 49-57
+# Q4: Lines 55-64
 
 # Find the province with the highest average change for each item
 highest_avg_change = avg_monthly_change.loc[avg_monthly_change.groupby('Item')['pct_change'].idxmax()]
@@ -67,7 +63,7 @@ for item in items_of_interest:
     pct_change = highest_change['pct_change'].values[0]
     print(f"The province with the highest average change in {item} is {jurisdiction} with an average change of {pct_change}%.")
 
-# Q5 63-74 - Compute the annual change in CPI for services across Canada and all provinces
+# Q5 68-82 - Compute the annual change in CPI for services across Canada and all provinces
 
 # Filter for the 'Services' item
 df_services = cpi_data[cpi_data['Item'] == 'Services']
@@ -85,7 +81,7 @@ df_services_pivot['YOY Change'] = df_services_pivot['YOY Change'].round(1)
 print(df_services_pivot[['YOY Change']])
 print("\n")
 
-# Q6 78-85
+# Q6 86-90
 
 # Print the jurisdiction with the highest YOY change
 highest_yoy_change_jurisdiction = df_services_pivot['YOY Change'].idxmax()
